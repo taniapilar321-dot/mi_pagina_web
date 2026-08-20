@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,33 +6,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Biblioteca Digital</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f4f9; }
-        header { background: #ffd1dc; color: #fff; padding: 1rem; text-align: center; }
-        .libro { background: #fff; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h1 { color: #ffd1dc; }
+        /* Estilos Generales */
+        body { font-family: 'Segoe UI', sans-serif; background-color: #fff0f5; color: #444; margin: 0; line-height: 1.6; }
+        
+        /* Menú de Navegación */
+        nav { background: #d87093; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        nav a:hover { text-decoration: underline; }
+        
+        /* Cabecera */
+        header { text-align: center; padding: 60px 20px; background: #fff; }
+        header h1 { color: #d87093; margin-bottom: 10px; }
+        
+        /* Contenedor de Libros */
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        
+        .libro-card {
+            background: white; margin-bottom: 25px; padding: 25px;
+            border-radius: 15px; border-left: 10px solid #d87093;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .libro-card:hover { transform: scale(1.02); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+        
+        /* Formulario */
+        .form-section { background: white; padding: 30px; border-radius: 15px; margin-top: 50px; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { background: #d87093; color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; }
+        button:hover { background: #c71585; }
+        
+        footer { text-align: center; padding: 40px; font-size: 0.9rem; color: #888; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Mi Biblioteca de Lecturas</h1>
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#libros">Mis Libros</a>
+        <a href="#contacto">Recomiéndame</a>
+    </nav>
+
+    <header id="inicio">
+        <h1>Mi Biblioteca Digital</h1>
+        <p>Un espacio curado con mis lecturas favoritas y aprendizajes.</p>
     </header>
 
-    <main>
-        <h2>Mis libros favoritos</h2>
+    <div class="container" id="libros">
+        <h2>Libros Destacados</h2>
         
-        <div class="libro">
+        <div class="libro-card">
             <h3>Título del Libro 1</h3>
-            <p><strong>Autor:</strong> Nombre del autor</p>
-            <p><em>Breve reseña o por qué me gustó este libro...</em></p>
+            <p><strong>Autor:</strong> Nombre del Autor</p>
+            <p>Aquí escribes tu reseña o lo que más te gustó de este libro. Al pasar el mouse, verás que la tarjeta responde.</p>
         </div>
 
-        <div class="libro">
+        <div class="libro-card">
             <h3>Título del Libro 2</h3>
-            <p><strong>Autor:</strong> Nombre del autor</p>
-            <p><em>Breve reseña o por qué me gustó este libro...</em></p>
+            <p><strong>Autor:</strong> Nombre del Autor</p>
+            <p>Este es un espacio perfecto para listar todas las obras que has leído recientemente.</p>
         </div>
-    </main>
+    </div>
+
+    <div class="container form-section" id="contacto">
+        <h2>¿Tienes una recomendación?</h2>
+        <form>
+            <input type="text" placeholder="Tu nombre" required>
+            <input type="email" placeholder="Tu correo electrónico" required>
+            <textarea rows="4" placeholder="¿Qué libro me recomiendas y por qué?"></textarea>
+            <button type="button" onclick="alert('¡Gracias! He recibido tu recomendación.')">Enviar Recomendación</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - Creado con pasión por Tania Del Pilar</p>
+    </footer>
 
 </body>
 </html>
