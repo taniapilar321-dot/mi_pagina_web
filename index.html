@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Biblioteca Digital</title>
+    <!-- Importamos una tipografía moderna y estilizada desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* Estilos Generales */
+        /* Estilos Generales con la nueva tipografía animada */
         body { 
-            font-family: 'Segoe UI', sans-serif; 
+            font-family: 'Outfit', sans-serif; 
             background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 50%, #ffc0cb 100%);
             color: #444; 
             line-height: 1.6;
@@ -37,16 +39,16 @@
             color: white; 
             margin: 0 20px; 
             text-decoration: none; 
-            font-weight: bold; 
+            font-weight: 600; 
             font-size: 1.1rem;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
             position: relative;
         }
         
         nav a:hover { 
-            text-decoration: none;
             transform: scale(1.1);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
         }
         
         nav a::after {
@@ -62,7 +64,7 @@
         
         nav a:hover::after { width: 100%; }
         
-        /* Cabecera */
+        /* Cabecera con animación de letras flotantes */
         header { 
             text-align: center; 
             padding: 80px 20px 60px;
@@ -78,24 +80,33 @@
         header h1 { 
             color: #d87093; 
             margin-bottom: 10px;
-            font-size: 3rem;
-            background: linear-gradient(45deg, #d87093, #ff69b4);
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #d87093, #ff1493, #ff69b4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 2px 2px 4px rgba(216, 112, 147, 0.1);
-            animation: scaleIn 0.8s ease-out;
+            text-shadow: 3px 3px 6px rgba(216, 112, 147, 0.15);
+            animation: floatTitle 3s ease-in-out infinite alternate;
         }
         
-        @keyframes scaleIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+        /* Animación para que el título flote sutilmente */
+        @keyframes floatTitle {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-6px); }
         }
         
         header p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #c71585;
-            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            animation: pulseText 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseText {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; text-shadow: 0 0 8px rgba(255, 105, 180, 0.4); }
         }
         
         /* Contenedor de Libros */
@@ -107,11 +118,13 @@
         
         .container h2 {
             color: #d87093;
-            font-size: 2.2rem;
+            font-size: 2.3rem;
+            font-weight: 700;
             margin-bottom: 30px;
             text-align: center;
             position: relative;
             padding-bottom: 15px;
+            letter-spacing: 1px;
         }
         
         .container h2::after {
@@ -120,7 +133,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 120px;
             height: 3px;
             background: linear-gradient(90deg, #d87093, #ff69b4, #d87093);
             border-radius: 2px;
@@ -139,42 +152,29 @@
             overflow: hidden;
         }
         
-        .libro-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 105, 180, 0.1) 0%, transparent 70%);
-            transition: all 0.6s ease;
-        }
-        
         .libro-card:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 20px 50px rgba(216, 112, 147, 0.3);
             border-left: 8px solid #ff1493;
         }
         
-        .libro-card:hover::before {
-            top: -20%;
-            right: -20%;
-        }
-        
         .libro-card h3 {
             color: #d87093;
-            font-size: 1.6rem;
+            font-size: 1.7rem;
+            font-weight: 700;
             margin-bottom: 10px;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .libro-card:hover h3 {
             color: #ff1493;
+            letter-spacing: 0.5px; /* Las letras se expanden ligeramente con elegancia al pasar el mouse */
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.2);
         }
         
         .libro-card strong { color: #ff69b4; }
         
-        .libro-card p { color: #555; line-height: 1.8; }
+        .libro-card p { color: #555; line-height: 1.8; font-weight: 400; }
         
         /* Formulario */
         .form-section { 
@@ -184,16 +184,11 @@
             margin-top: 60px;
             box-shadow: 0 8px 25px rgba(216, 112, 147, 0.15);
             border-top: 5px solid #ff69b4;
-            animation: slideUp 0.8s ease-out;
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
         
         .form-section h2 {
             color: #d87093;
+            font-weight: 700;
         }
         
         input, textarea { 
@@ -203,8 +198,9 @@
             border: 2px solid #ffb6d9;
             border-radius: 12px;
             box-sizing: border-box;
-            font-family: inherit;
+            font-family: 'Outfit', sans-serif;
             font-size: 1rem;
+            color: #444;
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.8);
         }
@@ -220,6 +216,7 @@
         input::placeholder, textarea::placeholder {
             color: #d87093;
             opacity: 0.7;
+            font-weight: 300;
         }
         
         button { 
@@ -229,61 +226,40 @@
             border: none;
             border-radius: 12px;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
             transition: all 0.4s ease;
             width: 100%;
             margin-top: 10px;
             box-shadow: 0 4px 15px rgba(216, 112, 147, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        button:hover::before {
-            width: 300px;
-            height: 300px;
+            font-family: 'Outfit', sans-serif;
         }
         
         button:hover { 
             background: linear-gradient(90deg, #c71585 0%, #ff1493 100%);
-            transform: scale(1.05);
+            transform: scale(1.03);
             box-shadow: 0 8px 25px rgba(216, 112, 147, 0.5);
-        }
-        
-        button:active {
-            transform: scale(0.98);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
         }
         
         footer { 
             text-align: center; 
             padding: 50px 20px; 
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #d87093;
             background: linear-gradient(180deg, transparent, rgba(216, 112, 147, 0.05));
-            font-weight: 500;
+            font-weight: 600;
+            letter-spacing: 0.5px;
             margin-top: 60px;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            header h1 { font-size: 2rem; }
+            header h1 { font-size: 2.2rem; }
             nav a { margin: 0 10px; font-size: 0.95rem; }
             .container { padding: 15px; }
             .form-section { padding: 25px; }
-            button { padding: 12px 20px; }
         }
     </style>
 </head>
@@ -306,13 +282,13 @@
         <div class="libro-card">
             <h3>Título del Libro 1</h3>
             <p><strong>Autor:</strong> Nombre del Autor</p>
-            <p>Aquí escribes tu reseña o lo que más te gustó de este libro. Al pasar el mouse, verás que la tarjeta responde con efectos dinámicos.</p>
+            <p>Aquí escribes tu reseña o lo que más te gustó de este libro. Al pasar el mouse, verás que la tarjeta responde y la tipografía cobra vida.</p>
         </div>
 
         <div class="libro-card">
             <h3>Título del Libro 2</h3>
             <p><strong>Autor:</strong> Nombre del Autor</p>
-            <p>Este es un espacio perfecto para listar todas las obras que has leído recientemente. ¡Disfruta del nuevo diseño!</p>
+            <p>Este es un espacio perfecto para listar todas las obras que has leído recientemente. ¡Disfruta de las animaciones fluidas!</p>
         </div>
     </div>
 
