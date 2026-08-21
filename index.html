@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,36 +5,286 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Biblioteca Digital</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         /* Estilos Generales */
-        body { font-family: 'Segoe UI', sans-serif; background-color: #fff0f5; color: #444; margin: 0; line-height: 1.6; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 50%, #ffc0cb 100%);
+            color: #444; 
+            line-height: 1.6;
+            min-height: 100vh;
+        }
         
         /* Menú de Navegación */
-        nav { background: #d87093; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
-        nav a:hover { text-decoration: underline; }
+        nav { 
+            background: linear-gradient(90deg, #d87093 0%, #ff69b4 50%, #d87093 100%);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(216, 112, 147, 0.4);
+            animation: slideDown 0.6s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        nav a { 
+            color: white; 
+            margin: 0 20px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:hover { 
+            text-decoration: none;
+            transform: scale(1.1);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after { width: 100%; }
         
         /* Cabecera */
-        header { text-align: center; padding: 60px 20px; background: #fff; }
-        header h1 { color: #d87093; margin-bottom: 10px; }
+        header { 
+            text-align: center; 
+            padding: 80px 20px 60px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 224, 225, 0.8) 100%);
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        header h1 { 
+            color: #d87093; 
+            margin-bottom: 10px;
+            font-size: 3rem;
+            background: linear-gradient(45deg, #d87093, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 4px rgba(216, 112, 147, 0.1);
+            animation: scaleIn 0.8s ease-out;
+        }
+        
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            color: #c71585;
+            font-style: italic;
+        }
         
         /* Contenedor de Libros */
-        .container { max-width: 800px; margin: auto; padding: 20px; }
+        .container { 
+            max-width: 900px; 
+            margin: auto; 
+            padding: 20px;
+        }
+        
+        .container h2 {
+            color: #d87093;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #d87093, #ff69b4, #d87093);
+            border-radius: 2px;
+        }
         
         .libro-card {
-            background: white; margin-bottom: 25px; padding: 25px;
-            border-radius: 15px; border-left: 10px solid #d87093;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 240, 245, 0.95) 100%);
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 8px solid #ff69b4;
+            border-right: 3px solid #d87093;
+            box-shadow: 0 8px 25px rgba(216, 112, 147, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
         }
-        .libro-card:hover { transform: scale(1.02); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+        
+        .libro-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.1) 0%, transparent 70%);
+            transition: all 0.6s ease;
+        }
+        
+        .libro-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(216, 112, 147, 0.3);
+            border-left: 8px solid #ff1493;
+        }
+        
+        .libro-card:hover::before {
+            top: -20%;
+            right: -20%;
+        }
+        
+        .libro-card h3 {
+            color: #d87093;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .libro-card:hover h3 {
+            color: #ff1493;
+        }
+        
+        .libro-card strong { color: #ff69b4; }
+        
+        .libro-card p { color: #555; line-height: 1.8; }
         
         /* Formulario */
-        .form-section { background: white; padding: 30px; border-radius: 15px; margin-top: 50px; }
-        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-        button { background: #d87093; color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; }
-        button:hover { background: #c71585; }
+        .form-section { 
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 240, 245, 0.9) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 60px;
+            box-shadow: 0 8px 25px rgba(216, 112, 147, 0.15);
+            border-top: 5px solid #ff69b4;
+            animation: slideUp 0.8s ease-out;
+        }
         
-        footer { text-align: center; padding: 40px; font-size: 0.9rem; color: #888; }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .form-section h2 {
+            color: #d87093;
+        }
+        
+        input, textarea { 
+            width: 100%; 
+            padding: 14px;
+            margin: 12px 0;
+            border: 2px solid #ffb6d9;
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        input:focus, textarea:focus { 
+            outline: none;
+            border-color: #ff69b4;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+            transform: translateX(5px);
+            background: white;
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: #d87093;
+            opacity: 0.7;
+        }
+        
+        button { 
+            background: linear-gradient(90deg, #d87093 0%, #ff69b4 100%);
+            color: white;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            width: 100%;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(216, 112, 147, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        button:hover { 
+            background: linear-gradient(90deg, #c71585 0%, #ff1493 100%);
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(216, 112, 147, 0.5);
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+        
+        footer { 
+            text-align: center; 
+            padding: 50px 20px; 
+            font-size: 0.95rem;
+            color: #d87093;
+            background: linear-gradient(180deg, transparent, rgba(216, 112, 147, 0.05));
+            font-weight: 500;
+            margin-top: 60px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            nav a { margin: 0 10px; font-size: 0.95rem; }
+            .container { padding: 15px; }
+            .form-section { padding: 25px; }
+            button { padding: 12px 20px; }
+        }
     </style>
 </head>
 <body>
@@ -47,38 +296,38 @@
     </nav>
 
     <header id="inicio">
-        <h1>Mi Biblioteca Digital</h1>
+        <h1>✨ Mi Biblioteca Digital ✨</h1>
         <p>Un espacio curado con mis lecturas favoritas y aprendizajes.</p>
     </header>
 
     <div class="container" id="libros">
-        <h2>Libros Destacados</h2>
+        <h2>📚 Libros Destacados</h2>
         
         <div class="libro-card">
             <h3>Título del Libro 1</h3>
             <p><strong>Autor:</strong> Nombre del Autor</p>
-            <p>Aquí escribes tu reseña o lo que más te gustó de este libro. Al pasar el mouse, verás que la tarjeta responde.</p>
+            <p>Aquí escribes tu reseña o lo que más te gustó de este libro. Al pasar el mouse, verás que la tarjeta responde con efectos dinámicos.</p>
         </div>
 
         <div class="libro-card">
             <h3>Título del Libro 2</h3>
             <p><strong>Autor:</strong> Nombre del Autor</p>
-            <p>Este es un espacio perfecto para listar todas las obras que has leído recientemente.</p>
+            <p>Este es un espacio perfecto para listar todas las obras que has leído recientemente. ¡Disfruta del nuevo diseño!</p>
         </div>
     </div>
 
     <div class="container form-section" id="contacto">
-        <h2>¿Tienes una recomendación?</h2>
+        <h2>💌 ¿Tienes una recomendación?</h2>
         <form>
             <input type="text" placeholder="Tu nombre" required>
             <input type="email" placeholder="Tu correo electrónico" required>
             <textarea rows="4" placeholder="¿Qué libro me recomiendas y por qué?"></textarea>
-            <button type="button" onclick="alert('¡Gracias! He recibido tu recomendación.')">Enviar Recomendación</button>
+            <button type="button" onclick="alert('¡Gracias! He recibido tu recomendación. 💕')">✨ Enviar Recomendación ✨</button>
         </form>
     </div>
 
     <footer>
-        <p>&copy; 2026 - Creado con pasión por Tania Del Pilar</p>
+        <p>&copy; 2026 - Creado con pasión por Tania Del Pilar 💖</p>
     </footer>
 
 </body>
