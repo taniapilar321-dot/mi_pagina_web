@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Biblioteca Digital</title>
-    <!-- Importamos una tipografía moderna y estilizada desde Google Fonts -->
+    <title>Mi Biblioteca Digital - Pasteles</title>
+    <!-- Importamos la tipografía Outfit -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* Estilos Generales con la nueva tipografía animada */
+        /* Paleta de Colores Pasteles Suaves */
         body { 
             font-family: 'Outfit', sans-serif; 
-            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 50%, #ffc0cb 100%);
-            color: #444; 
+            background: linear-gradient(135deg, #fdf6f9 0%, #e8f4fd 50%, #fef9e7 100%);
+            color: #555555; 
             line-height: 1.6;
             min-height: 100vh;
         }
         
-        /* Menú de Navegación */
+        /* Menú de Navegación Pastel */
         nav { 
-            background: linear-gradient(90deg, #d87093 0%, #ff69b4 50%, #d87093 100%);
+            background: linear-gradient(90deg, #b5ead7 0%, #ffdac1 50%, #c7ceea 100%);
             padding: 15px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(216, 112, 147, 0.4);
+            box-shadow: 0 4px 15px rgba(181, 234, 215, 0.4);
             animation: slideDown 0.6s ease-out;
         }
         
@@ -36,7 +36,7 @@
         }
         
         nav a { 
-            color: white; 
+            color: #6c757d; 
             margin: 0 20px; 
             text-decoration: none; 
             font-weight: 600; 
@@ -47,8 +47,9 @@
         }
         
         nav a:hover { 
+            color: #495057;
             transform: scale(1.1);
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
         
         nav a::after {
@@ -58,17 +59,17 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: white;
+            background: #495057;
             transition: width 0.3s ease;
         }
         
         nav a:hover::after { width: 100%; }
         
-        /* Cabecera con animación de letras flotantes */
+        /* Cabecera */
         header { 
             text-align: center; 
             padding: 80px 20px 60px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 224, 225, 0.8) 100%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(232, 244, 253, 0.6) 100%);
             animation: fadeIn 0.8s ease-out;
         }
         
@@ -78,19 +79,18 @@
         }
         
         header h1 { 
-            color: #d87093; 
+            color: #ff9aa2; 
             margin-bottom: 10px;
             font-size: 3.2rem;
             font-weight: 800;
-            background: linear-gradient(45deg, #d87093, #ff1493, #ff69b4);
+            background: linear-gradient(45deg, #ff9aa2, #ffb7b2, #b5ead7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 3px 3px 6px rgba(216, 112, 147, 0.15);
+            text-shadow: 3px 3px 6px rgba(255, 154, 162, 0.15);
             animation: floatTitle 3s ease-in-out infinite alternate;
         }
         
-        /* Animación para que el título flote sutilmente */
         @keyframes floatTitle {
             0% { transform: translateY(0px); }
             100% { transform: translateY(-6px); }
@@ -98,15 +98,9 @@
         
         header p {
             font-size: 1.2rem;
-            color: #c71585;
+            color: #b5838d;
             font-weight: 400;
             letter-spacing: 0.5px;
-            animation: pulseText 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes pulseText {
-            0% { opacity: 0.8; }
-            100% { opacity: 1; text-shadow: 0 0 8px rgba(255, 105, 180, 0.4); }
         }
         
         /* Contenedor de Libros */
@@ -117,7 +111,7 @@
         }
         
         .container h2 {
-            color: #d87093;
+            color: #b5838d;
             font-size: 2.3rem;
             font-weight: 700;
             margin-bottom: 30px;
@@ -135,18 +129,18 @@
             transform: translateX(-50%);
             width: 120px;
             height: 3px;
-            background: linear-gradient(90deg, #d87093, #ff69b4, #d87093);
+            background: linear-gradient(90deg, #ff9aa2, #ffb7b2, #b5ead7);
             border-radius: 2px;
         }
         
         .libro-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 240, 245, 0.95) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(253, 246, 249, 0.95) 100%);
             margin-bottom: 25px;
             padding: 30px;
             border-radius: 20px;
-            border-left: 8px solid #ff69b4;
-            border-right: 3px solid #d87093;
-            box-shadow: 0 8px 25px rgba(216, 112, 147, 0.15);
+            border-left: 8px solid #ffb7b2;
+            border-right: 3px solid #b5ead7;
+            box-shadow: 0 8px 25px rgba(255, 183, 178, 0.2);
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
@@ -154,12 +148,12 @@
         
         .libro-card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(216, 112, 147, 0.3);
-            border-left: 8px solid #ff1493;
+            box-shadow: 0 20px 50px rgba(255, 154, 162, 0.3);
+            border-left: 8px solid #ff9aa2;
         }
         
         .libro-card h3 {
-            color: #d87093;
+            color: #b5838d;
             font-size: 1.7rem;
             font-weight: 700;
             margin-bottom: 10px;
@@ -167,27 +161,26 @@
         }
         
         .libro-card:hover h3 {
-            color: #ff1493;
-            letter-spacing: 0.5px; /* Las letras se expanden ligeramente con elegancia al pasar el mouse */
-            text-shadow: 0 0 10px rgba(255, 20, 147, 0.2);
+            color: #ff6f61;
+            letter-spacing: 0.5px;
         }
         
-        .libro-card strong { color: #ff69b4; }
+        .libro-card strong { color: #e5989b; }
         
-        .libro-card p { color: #555; line-height: 1.8; font-weight: 400; }
+        .libro-card p { color: #6c757d; line-height: 1.8; font-weight: 400; }
         
         /* Formulario */
         .form-section { 
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 240, 245, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 247, 254, 0.9) 100%);
             padding: 40px;
             border-radius: 20px;
             margin-top: 60px;
-            box-shadow: 0 8px 25px rgba(216, 112, 147, 0.15);
-            border-top: 5px solid #ff69b4;
+            box-shadow: 0 8px 25px rgba(199, 206, 234, 0.3);
+            border-top: 5px solid #c7ceea;
         }
         
         .form-section h2 {
-            color: #d87093;
+            color: #b5838d;
             font-weight: 700;
         }
         
@@ -195,33 +188,33 @@
             width: 100%; 
             padding: 14px;
             margin: 12px 0;
-            border: 2px solid #ffb6d9;
+            border: 2px solid #e2ece9;
             border-radius: 12px;
             box-sizing: border-box;
             font-family: 'Outfit', sans-serif;
             font-size: 1rem;
-            color: #444;
+            color: #495057;
             transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
         }
         
         input:focus, textarea:focus { 
             outline: none;
-            border-color: #ff69b4;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+            border-color: #ffb7b2;
+            box-shadow: 0 0 15px rgba(255, 183, 178, 0.4);
             transform: translateX(5px);
             background: white;
         }
         
         input::placeholder, textarea::placeholder {
-            color: #d87093;
+            color: #b5838d;
             opacity: 0.7;
             font-weight: 300;
         }
         
         button { 
-            background: linear-gradient(90deg, #d87093 0%, #ff69b4 100%);
-            color: white;
+            background: linear-gradient(90deg, #ffb7b2 0%, #b5ead7 100%);
+            color: #555555;
             padding: 14px 35px;
             border: none;
             border-radius: 12px;
@@ -232,29 +225,28 @@
             transition: all 0.4s ease;
             width: 100%;
             margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(216, 112, 147, 0.3);
+            box-shadow: 0 4px 15px rgba(181, 234, 215, 0.4);
             font-family: 'Outfit', sans-serif;
         }
         
         button:hover { 
-            background: linear-gradient(90deg, #c71585 0%, #ff1493 100%);
+            background: linear-gradient(90deg, #ff9aa2 0%, #a0c4ff 100%);
+            color: #fff;
             transform: scale(1.03);
-            box-shadow: 0 8px 25px rgba(216, 112, 147, 0.5);
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 25px rgba(255, 154, 162, 0.5);
         }
         
         footer { 
             text-align: center; 
             padding: 50px 20px; 
             font-size: 1rem;
-            color: #d87093;
-            background: linear-gradient(180deg, transparent, rgba(216, 112, 147, 0.05));
+            color: #b5838d;
+            background: linear-gradient(180deg, transparent, rgba(181, 234, 215, 0.1));
             font-weight: 600;
             letter-spacing: 0.5px;
             margin-top: 60px;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             header h1 { font-size: 2.2rem; }
             nav a { margin: 0 10px; font-size: 0.95rem; }
@@ -273,37 +265,30 @@
 
     <header id="inicio">
         <h1>✨ Mi Biblioteca Digital ✨</h1>
-        <p>Un espacio curado con mis lecturas favoritas y aprendizajes.</p>
+        <p>Un espacio mágico y suave curado con mis lecturas favoritas.</p>
     </header>
 
     <div class="container" id="libros">
-        <h2>📚 Libros Destacados</h2>
+        <h2>🌸 Libros Destacados</h2>
         
         <div class="libro-card">
             <h3>Título del Libro 1</h3>
             <p><strong>Autor:</strong> Nombre del Autor</p>
-            <p>Aquí escribes tu reseña o lo que más te gustó de este libro. Al pasar el mouse, verás que la tarjeta responde y la tipografía cobra vida.</p>
+            <p>Aquí escribes tu reseña con esta combinación de tonos pasteles sumamente tierna, clara y relajante para la vista.</p>
         </div>
 
         <div class="libro-card">
             <h3>Título del Libro 2</h3>
             <p><strong>Autor:</strong> Nombre del Autor</p>
-            <p>Este es un espacio perfecto para listar todas las obras que has leído recientemente. ¡Disfruta de las animaciones fluidas!</p>
+            <p>Ideal para darle a tu página web una vibra súper estética, dulce y delicada.</p>
         </div>
     </div>
 
-    <div class="container form-section" id="contacto">
-        <h2>💌 ¿Tienes una recomendación?</h2>
-        <form>
-            <input type="text" placeholder="Tu nombre" required>
-            <input type="email" placeholder="Tu correo electrónico" required>
-            <textarea rows="4" placeholder="¿Qué libro me recomiendas y por qué?"></textarea>
-            <button type="button" onclick="alert('¡Gracias! He recibido tu recomendación. 💕')">✨ Enviar Recomendación ✨</button>
-        </form>
+
     </div>
 
     <footer>
-        <p>&copy; 2026 - Creado con pasión por Tania Del Pilar 💖</p>
+        <p>&copy; 2026 - Creado con pasión por Tania Del Pilar ☁️💖</p>
     </footer>
 
 </body>
